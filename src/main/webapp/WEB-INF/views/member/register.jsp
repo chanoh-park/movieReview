@@ -4,13 +4,18 @@
 <html>
 <head>
 
-<!-- 합쳐지고 최소화된 최신 CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- 부가적인 테마 -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-	
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- BootStrap -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
 <title>회원가입</title>
 </head>
@@ -29,16 +34,20 @@
 				$("#name").focus();
 				return false;
 			}
+			
 			if($("#userId").val()==""){
 				alert("아이디를 입력해주세요.");
 				$("#userId").focus();
 				return false;
 			}
+			
 			if($("#userPw").val()==""){
 				alert("비밀번호를 입력해주세요.");
 				$("#userPw").focus();
 				return false;
 			}
+			
+			<%--
 			var idChkVal = $("#idChk").val();
 			
 			if (idChkVal == "N") {
@@ -46,9 +55,11 @@
 			} else if (idChkVal == "Y") {
 				$("#regForm").submit();
 			}
+			--%>
 		});	
 	});
 	
+	<%--
 	function fn_idChk() {
 		$.ajax({
 			url : "/member/idChk",
@@ -65,6 +76,7 @@
 			}
 		});
 	}
+	--%>
 </script>
 <body>
 <div class="container">
@@ -76,7 +88,7 @@
 		<div class="form-group has-feedback">
 			<label class="control-label" for="userId">아이디</label>
 			<input class="form-control" type="text" id="userId" name="userId" />
-			<button class="idChk" type="button" id="idChk" onclick="fn_idChk();" value="N">중복확인</button>
+			<!-- <button class="idChk" type="button" id="idChk" onclick="fn_idChk();" value="N">중복확인</button>  -->
 		</div>
 		<div class="form-group has-feedback">
 			<label class="control-label" for="userPw">비밀번호</label>

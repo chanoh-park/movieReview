@@ -13,7 +13,6 @@ import com.movie.member.service.MemberService;
 import lombok.extern.log4j.Log4j;
 
 @Controller
-@RequestMapping("/member/*")
 @Log4j
 public class MemberController {
 
@@ -21,17 +20,22 @@ public class MemberController {
 	MemberService service;
 	
 	// 회원가입 GET
-	@RequestMapping(value="/register", method=RequestMethod.GET)
+	@RequestMapping(value="/main", method=RequestMethod.GET)
 	public void getRegister() throws Exception {
 		log.info("get register");
 	}
 	
 	// 회원가입 POST
-	@RequestMapping(value="/register", method=RequestMethod.POST)
+	@RequestMapping(value="/main", method=RequestMethod.POST)
 	public String postRegister(MemberVO vo) throws Exception {
 		
 		log.info("post register");
 		
+		service.register(vo);
+		
+		return null;
+		
+		/*
 		int result = service.idChk(vo);
 		
 		try {
@@ -45,8 +49,10 @@ public class MemberController {
 		}
 		
 		return "redirect:/";
+		*/
 	}
 	
+	/*
 	// 아이디 중복 체크
 	@ResponseBody
 	@RequestMapping(value="/idChk", method=RequestMethod.POST)
@@ -57,5 +63,6 @@ public class MemberController {
 		return result;
 		
 	}
+	*/
 	
 }

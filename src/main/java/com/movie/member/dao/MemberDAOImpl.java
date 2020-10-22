@@ -21,6 +21,7 @@ public class MemberDAOImpl implements MemberDAO {
 		
 	}
 	
+	/*
 	// 아이디 중복 체크
 	@Override
 	public int idChk(MemberVO vo) throws Exception {
@@ -30,5 +31,6 @@ public class MemberDAOImpl implements MemberDAO {
 		return result;
 		
 	}
+	*/
 	
 }
