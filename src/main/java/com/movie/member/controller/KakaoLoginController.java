@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.fasterxml.jackson.databind.JsonNode;
 
 @Controller
-public class KakaoController {
+public class KakaoLoginController {
 
 	@RequestMapping(value = "/kakaologin", produces = "application/json")
 	public String kakaoLogin(@RequestParam("code") String code, Model model, HttpSession session) {

@@ -31,7 +31,7 @@ public class KakaoRestApi {
  
         postParams.add(new BasicNameValuePair("client_id", "295d53cb156ca5e83e6bb8370e8bcc18"));
  
-        postParams.add(new BasicNameValuePair("redirect_uri", "https://localhost:8080/kakaologin"));
+        postParams.add(new BasicNameValuePair("redirect_uri", "http://localhost:8080/kakaologin"));
  
         postParams.add(new BasicNameValuePair("code", autorize_code));
  
@@ -70,4 +70,45 @@ public class KakaoRestApi {
         return returnNode;
  
     }
+	
+	public JsonNode Logout(String autorize_code) {
+		 
+	 	final String RequestUrl = "https://kapi.kakao.com/v1/user/logout";
+ 
+        final HttpClient client = HttpClientBuilder.create().build();
+ 
+        final HttpPost post = new HttpPost(RequestUrl);
+ 
+        post.addHeader("Authorization", "Bearer " + autorize_code);
+ 
+        JsonNode returnNode = null;
+ 
+        try {
+ 
+            final HttpResponse response = client.execute(post);
+ 
+            ObjectMapper mapper = new ObjectMapper();
+ 
+            returnNode = mapper.readTree(response.getEntity().getContent());
+ 
+        } catch (UnsupportedEncodingException e) {
+ 
+            e.printStackTrace();
+ 
+        } catch (ClientProtocolException e) {
+ 
+            e.printStackTrace();
+ 
+        } catch (IOException e) {
+ 
+            e.printStackTrace();
+ 
+        } finally {
+ 
+        }
+ 
+        return returnNode;
+	 
+	 }
+	 
 }
