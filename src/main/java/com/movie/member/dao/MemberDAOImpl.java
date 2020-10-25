@@ -21,16 +21,14 @@ public class MemberDAOImpl implements MemberDAO {
 		
 	}
 	
-	/*
-	// 아이디 중복 체크
+	// ID 중복확인
 	@Override
-	public int idChk(MemberVO vo) throws Exception {
+	public int idCheck(String userId) {
 		
-		int result = sql.selectOne("MemberMapper.idChk", vo);
+		int cnt = sql.selectOne("MemberMapper.idCheck", userId);
 		
-		return result;
+		return cnt;
 		
 	}
-	*/
 	
 }

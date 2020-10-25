@@ -3,8 +3,10 @@ package com.movie.member.controller;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.movie.member.model.MemberVO;
@@ -35,34 +37,15 @@ public class MemberController {
 		
 		return null;
 		
-		/*
-		int result = service.idChk(vo);
-		
-		try {
-			if (result == 1) {
-				return "/member/register";
-			} else if (result == 0) {
-				service.register(vo);
-			} 
-		} catch (Exception e) {
-			throw new RuntimeException();
-		}
-		
-		return "redirect:/";
-		*/
 	}
 	
-	/*
-	// 아이디 중복 체크
+	// ID 중복확인
+	@RequestMapping(value="/idCheck", method=RequestMethod.GET)
 	@ResponseBody
-	@RequestMapping(value="/idChk", method=RequestMethod.POST)
-	public int idChk(MemberVO vo) throws Exception {
-		
-		int result = service.idChk(vo);
-		
-		return result;
-		
+	public int idCheck(@RequestParam("userId") String userId) {
+		log.info(userId);
+		int cnt = service.idCheck(userId);
+		return cnt;
 	}
-	*/
-	
+
 }
