@@ -10,4 +10,7 @@ public interface MemberDAO {
 	// ID 중복확인
 	public int idCheck(String userId);
 	
+	// 로그인
+	public MemberVO login(MemberVO vo) throws Exception;
+	
 }

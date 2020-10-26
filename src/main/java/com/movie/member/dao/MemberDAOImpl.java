@@ -31,4 +31,12 @@ public class MemberDAOImpl implements MemberDAO {
 		
 	}
 	
+	// 로그인
+	@Override
+	public MemberVO login(MemberVO vo) throws Exception {
+		
+		return sql.selectOne("MemberMapper.login", vo);
+		
+	}
+	
 }

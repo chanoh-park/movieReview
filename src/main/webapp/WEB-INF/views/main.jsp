@@ -59,7 +59,7 @@
 		background: #F5F5F5;
 	}
 	
-	.userLogin {
+	.userLogin, .userJoin {
 		font-family: 'Do Hyeon', sans-serif;
 		font-size: 15px;
 		text-align: center;
@@ -88,8 +88,123 @@
 	
 </style>
 
+<script type="text/javascript">
+	
+	$( document ).ready( function() {
+		
+		/* 회원가입 이름 체크 */
+		$('#name').focusout(function() {
+			if(this.value == "") {
+				$('#name-check').text("이름을 입력하세요.");
+				$("#name-check").css("color", "red");
+				$("#name").css("border", "2px solid red");
+				$("#submit").attr("disabled", true);
+			}
+			else {
+				$('#name-check').text("");
+				$("#name").css("border", "2px solid #19CE60");
+				$("#submit").attr("disabled", false);
+			}
+		});
+		
+		/* 회원가입 아이디 체크 */
+		$('#userId').focusout(function() {
+			
+			var user_id = $("#userId").val();
+			
+			if(this.value == "") {
+				$('#id-check').text("아이디를 입력하세요.");
+				$("#id-check").css("color", "red");
+				$("#userId").css("border", "2px solid red");
+				$("#submit").attr("disabled", true);
+			}
+			else {
+				/* ID 중복확인 */
+				$.ajax({
+					url : "/idCheck?userId=" + user_id,
+					type : "get",
+					dataType: "json",
+					success : function(data) {
+						console.log("hello");
+						if (data == 1) {
+							$("#id-check").text("이미 사용중인 아이디입니다.");
+							$("#id-check").css("color", "red");
+							$("#userId").css("border", "2px solid red");
+							$("#submit").attr("disabled", true);
+						}else {
+							$("#id-check").text("사용 가능한 아이디입니다.");
+							$("#id-check").css("color", "green");
+							$("#userId").css("border", "2px solid #19CE60");
+							$("#submit").attr("disabled", false);
+						}
+					}
+				});
+			}
+		});
+		
+		/* login 아이디 체크 */
+		$('#userId2').focusout(function() {
+			if(this.value == "") {
+				$('#id-check2').text("이름을 입력하세요.");
+				$("#id-check2").css("color", "red");
+				$("#userId2").css("border", "2px solid red");
+				$("#submit").attr("disabled", true);
+			}
+			else {
+				$('#id-check2').text("");
+				$("#userId2").css("border", "2px solid #19CE60");
+				$("#submit").attr("disabled", false);
+			}
+		});
+		
+		/* 회원가입 비밀번호 체크 */
+		$('#userPw').focusout(function() {
+			if(this.value == "") {
+				$('#password-check').text("비밀번호를 입력하세요.");
+				$("#password-check").css("color", "red");
+				$("#userPw").css("border", "2px solid red");
+				$("#submit").attr("disabled", true);
+			}
+			else {
+				$('#password-check').text("");
+				$("#userPw").css("border", "2px solid #19CE60");
+				$("#submit").attr("disabled", false);
+			}
+		});
+		
+		/* login 비밀번호 체크 */
+		$('#userPw2').focusout(function() {
+			if(this.value == "") {
+				$('#password-check2').text("비밀번호를 입력하세요.");
+				$("#password-check2").css("color", "red");
+				$("#userPw2").css("border", "2px solid red");
+				$("#submit").attr("disabled", true);
+			}
+			else {
+				$('#password-check2').text("");
+				$("#userPw2").css("border", "2px solid #19CE60");
+				$("#submit").attr("disabled", false);
+			}
+		});
+		
+		/* 다른 모달창 띄우면 현재 열려있는 모달창 닫기 */
+		$('.userLoginBtn').click(function() {
+			$('#exampleModal').modal("hide");
+			$('#exampleModal2').modal("show");
+		});
+		
+		$('.userJoinBtn').click(function() {
+			$('#exampleModal2').modal("hide");
+			$('#exampleModal').modal("show");
+		});
+		
+	});
+	
+</script>
+
 <body>
 
+<%@ include file="includes/login.jsp" %>
 <%@ include file="includes/register.jsp" %>
 
 </body>
