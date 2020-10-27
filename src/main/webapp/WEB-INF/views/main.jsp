@@ -85,7 +85,7 @@
 		line-height: 0px;
 		margin: 0px 16px;
 	}
-	
+
 </style>
 
 <script type="text/javascript">
@@ -204,6 +204,7 @@
 
 <body>
 
+<%@ include file="includes/navbar.jsp" %>
 <%@ include file="includes/login.jsp" %>
 <%@ include file="includes/register.jsp" %>
 

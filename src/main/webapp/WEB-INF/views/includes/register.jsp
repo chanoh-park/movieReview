@@ -1,11 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal"
-	data-target="#exampleModal">회원가입</button>
-	<a href = "/logout">로그아웃</a>
-
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1"
 	aria-labelledby="exampleModalLabel" aria-hidden="true">

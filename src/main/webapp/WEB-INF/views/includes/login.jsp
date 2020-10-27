@@ -3,11 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal"
-	data-target="#exampleModal2">로그인</button>
-	<a href = "/logout">로그아웃</a>
-
 <!-- Modal -->
 <div class="modal fade" id="exampleModal2" tabindex="-1"
 	aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -16,7 +11,7 @@
 		
 			<div class="modal-title" id="exampleModalLabel">CHOONGANG<br /> PEDIA</div>
 			
-			<div class="part-title">회원가입</div>
+			<div class="part-title">로그인</div>
 			
 			<div class="modal-body">
 				<div class="container">
@@ -40,14 +35,6 @@
 							<a href = "https://kauth.kakao.com/oauth/authorize?client_id=295d53cb156ca5e83e6bb8370e8bcc18&redirect_uri=http://localhost:8080/kakaologin&response_type=code">
 					        	<img src="/resources/images/kakao_login_medium_wide.png" alt="" style="width: 311px;"/>
 						    </a>
-						</c:if>
-						<c:if test="${member != null }">
-							<div>
-								<p>${member.userId}님 환영 합니다.</p>
-							</div>
-						</c:if>
-						<c:if test="${msg == false}">
-							<p style="color: red;">로그인 실패! 아이디와 비밀번호 확인해주세요.</p>
 						</c:if>
 					</form>
 				</div>
