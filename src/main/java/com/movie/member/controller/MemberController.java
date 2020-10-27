@@ -80,5 +80,13 @@ public class MemberController {
 		return "redirect:/";
 		
 	}
+	
+	// 회원정보 페이지
+	@RequestMapping(value = "/member/user", method=RequestMethod.GET)
+	public void getUser() throws Exception {
+		
+		log.info("get user");
+		
+	}
 
 }
