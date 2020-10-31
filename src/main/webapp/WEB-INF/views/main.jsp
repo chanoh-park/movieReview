@@ -90,7 +90,7 @@
 
 <script type="text/javascript">
 	
-	$( document ).ready( function() {
+	$( document ).ready(function() {
 		
 		/* 회원가입 이름 체크 */
 		$('#name').focusout(function() {
@@ -125,7 +125,6 @@
 					type : "get",
 					dataType: "json",
 					success : function(data) {
-						console.log("hello");
 						if (data == 1) {
 							$("#id-check").text("이미 사용중인 아이디입니다.");
 							$("#id-check").css("color", "red");
@@ -188,11 +187,13 @@
 		});
 		
 		/* 다른 모달창 띄우면 현재 열려있는 모달창 닫기 */
+		/* 로그인 -> 회원가입 */
 		$('.userLoginBtn').click(function() {
 			$('#exampleModal').modal("hide");
 			$('#exampleModal2').modal("show");
 		});
 		
+		/* 회원가입 -> 로그인 */
 		$('.userJoinBtn').click(function() {
 			$('#exampleModal2').modal("hide");
 			$('#exampleModal').modal("show");

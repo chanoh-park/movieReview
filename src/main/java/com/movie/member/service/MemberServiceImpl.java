@@ -38,5 +38,31 @@ public class MemberServiceImpl implements MemberService {
 		return dao.login(vo);
 		
 	}
+
+	// 회원정보 수정
+	@Override
+	public void memberUpdate(MemberVO vo) throws Exception {
+		
+		dao.memberUpdate(vo);
+		
+	}
 	
+	// 비밀번호 확인
+	@Override
+	public int pwCheck(MemberVO vo) throws Exception {
+		
+		int result = dao.pwCheck(vo);
+		
+		return result;
+		
+	}
+	
+	// 회원탈퇴
+	@Override
+	public void memberDelete(MemberVO vo) throws Exception {
+		
+		dao.memberDelete(vo);
+		
+	}
+
 }
