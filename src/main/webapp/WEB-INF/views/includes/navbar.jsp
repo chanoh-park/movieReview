@@ -36,11 +36,11 @@
         <c:if test="${member == null }">
         	<!-- 로그인 Button trigger modal -->
 			<button type="button" class="btn btn-primary" data-toggle="modal"
-				data-target="#exampleModal2" style="margin-left: 10px; font-family: 'Do Hyeon', sans-serif; background: white; border: none; color: #74747B">로그인</button>
+				data-target="#loginForm" style="margin-left: 10px; font-family: 'Do Hyeon', sans-serif; background: white; border: none; color: #74747B">로그인</button>
 	
 			<!-- 회원가입 Button trigger modal -->
 			<button type="button" class="btn btn-primary" data-toggle="modal"
-				data-target="#exampleModal" style="margin-left: 10px; font-family: 'Do Hyeon', sans-serif; background: white; border: 1px solid #74747B; color: #353535">회원가입</button>
+				data-target="#joinForm" style="margin-left: 10px; font-family: 'Do Hyeon', sans-serif; background: white; border: 1px solid #74747B; color: #353535">회원가입</button>
 		</c:if>
 		
 		<c:if test="${member != null }">

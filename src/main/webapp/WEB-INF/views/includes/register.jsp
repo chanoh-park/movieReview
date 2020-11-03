@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1"
+<!-- 회원가입 Modal -->
+<div class="modal fade" id="joinForm" tabindex="-1"
 	aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered" style="width: 375px; height: 619px;">
 		<div class="modal-content">
@@ -15,18 +15,18 @@
 				<div class="container">
 					<form action="/register" method="post" class="needs-validation" novalidate>
 						<div class="form-group has-feedback">
-						 	<input class="form-control" type="text" id="name" name="name" placeholder="이름" autocomplete="off" required />
-						 	<div id='name-check'>
+						 	<input class="form-control" type="text" id="joinName" name="name" placeholder="이름" autocomplete="off" required />
+						 	<div id='join-name-check'>
 						    </div>
 						</div>
 						<div class="form-group has-feedback">
-							<input class="form-control" type="text" id="userId" name="userId" placeholder="아이디" autocomplete="off" required />
-							<div id='id-check'>
+							<input class="form-control" type="text" id="joinUserId" name="userId" placeholder="아이디" autocomplete="off" required />
+							<div id='join-id-check'>
 						    </div>
 						</div>
 						<div class="form-group has-feedback">
-							<input class="form-control" type="password" id="userPw" name="userPw" placeholder="비밀번호" autocomplete="off" required />
-							<div id='password-check'>
+							<input class="form-control" type="password" id="joinUserPw" name="userPw" placeholder="비밀번호" autocomplete="off" required />
+							<div id='join-password-check'>
 						    </div>
 						</div>
 						<div class="form-group has-feedback">

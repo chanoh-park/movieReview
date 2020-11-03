@@ -93,29 +93,29 @@
 	$( document ).ready(function() {
 		
 		/* 회원가입 이름 체크 */
-		$('#name').focusout(function() {
+		$('#joinName').focusout(function() {
 			if(this.value == "") {
-				$('#name-check').text("이름을 입력하세요.");
-				$("#name-check").css("color", "red");
-				$("#name").css("border", "2px solid red");
+				$('#join-name-check').text("이름을 입력하세요.");
+				$("#join-name-check").css("color", "red");
+				$("#joinName").css("border", "2px solid red");
 				$("#submit").attr("disabled", true);
 			}
 			else {
-				$('#name-check').text("");
-				$("#name").css("border", "2px solid #19CE60");
+				$('#join-name-check').text("");
+				$("#joinName").css("border", "2px solid #19CE60");
 				$("#submit").attr("disabled", false);
 			}
 		});
 		
 		/* 회원가입 아이디 체크 */
-		$('#userId').focusout(function() {
+		$('#joinUserId').focusout(function() {
 			
-			var user_id = $("#userId").val();
+			var user_id = $("#joinUserId").val();
 			
 			if(this.value == "") {
-				$('#id-check').text("아이디를 입력하세요.");
-				$("#id-check").css("color", "red");
-				$("#userId").css("border", "2px solid red");
+				$('#join-id-check').text("아이디를 입력하세요.");
+				$("#join-id-check").css("color", "red");
+				$("#joinUserId").css("border", "2px solid red");
 				$("#submit").attr("disabled", true);
 			}
 			else {
@@ -126,14 +126,14 @@
 					dataType: "json",
 					success : function(data) {
 						if (data == 1) {
-							$("#id-check").text("이미 사용중인 아이디입니다.");
-							$("#id-check").css("color", "red");
-							$("#userId").css("border", "2px solid red");
+							$("#join-id-check").text("이미 사용중인 아이디입니다.");
+							$("#join-id-check").css("color", "red");
+							$("#joinUserId").css("border", "2px solid red");
 							$("#submit").attr("disabled", true);
 						}else {
-							$("#id-check").text("사용 가능한 아이디입니다.");
-							$("#id-check").css("color", "green");
-							$("#userId").css("border", "2px solid #19CE60");
+							$("#join-id-check").text("사용 가능한 아이디입니다.");
+							$("#join-id-check").css("color", "green");
+							$("#joinUserId").css("border", "2px solid #19CE60");
 							$("#submit").attr("disabled", false);
 						}
 					}
@@ -141,47 +141,47 @@
 			}
 		});
 		
-		/* login 아이디 체크 */
-		$('#userId2').focusout(function() {
+		/* 회원가입 비밀번호 체크 */
+		$('#joinUserPw').focusout(function() {
 			if(this.value == "") {
-				$('#id-check2').text("이름을 입력하세요.");
-				$("#id-check2").css("color", "red");
-				$("#userId2").css("border", "2px solid red");
+				$('#join-password-check').text("비밀번호를 입력하세요.");
+				$("#join-password-check").css("color", "red");
+				$("#joinUserPw").css("border", "2px solid red");
 				$("#submit").attr("disabled", true);
 			}
 			else {
-				$('#id-check2').text("");
-				$("#userId2").css("border", "2px solid #19CE60");
+				$('#join-password-check').text("");
+				$("#joinUserPw").css("border", "2px solid #19CE60");
 				$("#submit").attr("disabled", false);
 			}
 		});
 		
-		/* 회원가입 비밀번호 체크 */
-		$('#userPw').focusout(function() {
+		/* login 아이디 체크 */
+		$('#loginUserId').focusout(function() {
 			if(this.value == "") {
-				$('#password-check').text("비밀번호를 입력하세요.");
-				$("#password-check").css("color", "red");
-				$("#userPw").css("border", "2px solid red");
+				$('#login-id-check').text("이름을 입력하세요.");
+				$("#login-id-check").css("color", "red");
+				$("#loginUserId").css("border", "2px solid red");
 				$("#submit").attr("disabled", true);
 			}
 			else {
-				$('#password-check').text("");
-				$("#userPw").css("border", "2px solid #19CE60");
+				$('#login-id-check').text("");
+				$("#loginUserId").css("border", "2px solid #19CE60");
 				$("#submit").attr("disabled", false);
 			}
 		});
 		
 		/* login 비밀번호 체크 */
-		$('#userPw2').focusout(function() {
+		$('#loginUserPw').focusout(function() {
 			if(this.value == "") {
-				$('#password-check2').text("비밀번호를 입력하세요.");
-				$("#password-check2").css("color", "red");
-				$("#userPw2").css("border", "2px solid red");
+				$('#login-password-check').text("비밀번호를 입력하세요.");
+				$("#login-password-check").css("color", "red");
+				$("#loginUserPw").css("border", "2px solid red");
 				$("#submit").attr("disabled", true);
 			}
 			else {
-				$('#password-check2').text("");
-				$("#userPw2").css("border", "2px solid #19CE60");
+				$('#login-password-check').text("");
+				$("#loginUserPw").css("border", "2px solid #19CE60");
 				$("#submit").attr("disabled", false);
 			}
 		});
@@ -189,14 +189,26 @@
 		/* 다른 모달창 띄우면 현재 열려있는 모달창 닫기 */
 		/* 로그인 -> 회원가입 */
 		$('.userLoginBtn').click(function() {
-			$('#exampleModal').modal("hide");
-			$('#exampleModal2').modal("show");
+			$('#joinForm').modal("hide");
+			$('#loginForm').modal("show");
 		});
 		
 		/* 회원가입 -> 로그인 */
 		$('.userJoinBtn').click(function() {
-			$('#exampleModal2').modal("hide");
-			$('#exampleModal').modal("show");
+			$('#loginForm').modal("hide");
+			$('#joinForm').modal("show");
+		});
+		
+		/* 로그인 -> 로그인 실패 */
+		$('#loginBtn').click(function() {
+			$('#loginForm').modal("hide");
+			$('#loginFailForm').modal("show");
+		});
+		
+		/* 로그인 실패 -> 로그인 */
+		$('#loginFailBtn').click(function() {
+			$('#loginFailForm').modal("hide");
+			$('#loginForm').modal("show");
 		});
 		
 	});

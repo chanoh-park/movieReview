@@ -73,31 +73,32 @@
 	$( document ).ready(function() {
 		
 		/* 비밀번호 확인 */
-		$('#userPw5').focusout(function() {
+		$('#pwCheckBtn').click(function() {
 			
-			if(this.value == "") {
-				$('#password-check5').text("비밀번호를 입력하세요.");
-				$("#password-check5").css("color", "red");
-				$("#userPw5").css("border", "2px solid red");
-				$("#pwCheck").attr("disabled", true);
-			}
-			else {
+			if($('#pwCheckUserPw').val() == "") {
+				$('#pwCheck-password-check').text("비밀번호를 입력하세요.");
+				$("#pwCheck-password-check").css("color", "red");
+				$("#pwCheckUserPw").css("border", "2px solid red");
+			} else {
 				$.ajax({
 					url : "/pwCheck",
 					type : "post",
 					dataType : "json",
-					data : $("#exampleModal5").serializeArray(),
+					data : $("form[name=pwCheck]").serialize(),
 					success : function(data) {
 						if (data == 0) {
-							$("#password-check5").text("비밀번호가 틀렸습니다.");
-							$("#password-check5").css("color", "red");
-							$("#userPw5").css("border", "2px solid red");
-							$("#pwCheck").attr("disabled", true);
+							$("#pwCheck-password-check").text("비밀번호가 틀렸습니다.");
+							$("#pwCheck-password-check").css("color", "red");
+							$("#pwCheckUserPw").css("border", "2px solid red");
 						} else {
-							$("#password-check5").text("");
-							$("#password-check5").css("color", "green");
-							$("#userPw5").css("border", "2px solid #19CE60");
-							$("#pwCheck").attr("disabled", false);
+							$("#pwCheck-password-check").text("");
+							$("#pwCheck-password-check").css("color", "green");
+							$("#pwCheckUserPw").css("border", "2px solid #19CE60");
+							
+							/* 비밀번호 확인 -> 회원탈퇴 확인 */
+							$('#pwCheckForm').modal("hide");
+							$('#deleteForm').modal("show");
+							
 						}
 					}
 				});
@@ -105,31 +106,31 @@
 		});
 		
 		/* 회원정보 수정 이름 체크 */
-		$('#name4').focusout(function() {
+		$('#updateName').focusout(function() {
 			if(this.value == "") {
-				$("#name-check4").text("이름을 입력하세요.");
-				$("#name-check4").css("color", "red");
-				$("#name4").css("border", "2px solid red");
+				$("#update-name-check").text("이름을 입력하세요.");
+				$("#update-name-check").css("color", "red");
+				$("#updateName").css("border", "2px solid red");
 				$("#submit").attr("disabled", true);
 			}
 			else {
-				$("#name-check4").text("");
-				$("#name4").css("border", "2px solid #19CE60");
+				$("#update-name-check").text("");
+				$("#updateName").css("border", "2px solid #19CE60");
 				$("#submit").attr("disabled", false);
 			}
 		});
 		
 		/* 회원정보 수정 비밀번호 체크 */
-		$('#userPw4').focusout(function() {
+		$('#updateUserPw').focusout(function() {
 			if(this.value == "") {
-				$('#password-check4').text("비밀번호를 입력하세요.");
-				$("#password-check4").css("color", "red");
-				$("#userPw4").css("border", "2px solid red");
+				$('#update-password-check').text("비밀번호를 입력하세요.");
+				$("#update-password-check").css("color", "red");
+				$("#updateUserPw").css("border", "2px solid red");
 				$("#submit").attr("disabled", true);
 			}
 			else {
-				$('#password-check4').text("");
-				$("#userPw4").css("border", "2px solid #19CE60");
+				$('#update-password-check').text("");
+				$("#updateUserPw").css("border", "2px solid #19CE60");
 				$("#submit").attr("disabled", false);
 			}
 		});
@@ -137,20 +138,14 @@
 		/* 다른 모달창 띄우면 현재 열려있는 모달창 닫기 */
 		/* 설정 -> 회원정보 수정 */
 		$('.userUpdate').click(function() {
-			$('#exampleModal3').modal("hide");
-			$('#exampleModal4').modal("show");
+			$('#settingForm').modal("hide");
+			$('#updateForm').modal("show");
 		});
 		
 		/* 설정 -> 회원탈퇴 */
 		$('.userDelete').click(function() {
-			$('#exampleModal3').modal("hide");
-			$('#exampleModal5').modal("show");
-		});
-		
-		/* 비밀번호 확인 -> 회원탈퇴 확인 */
-		$('#pwCheck').click(function() {
-			$('#exampleModal5').modal("hide");
-			$('#exampleModal6').modal("show");
+			$('#settingForm').modal("hide");
+			$('#pwCheckForm').modal("show");
 		});
 		
 	});
@@ -164,14 +159,14 @@
 <div class="jumbotron jumbotron-fluid my-3 shadow p-3">
   <div class="container">
   	<!-- 설정 Button trigger modal -->
-	<i class="fas fa-cogs" style="float: right; cursor:pointer;" data-toggle="modal" data-target="#exampleModal3"></i>
+	<i class="fas fa-cogs" style="float: right; cursor:pointer;" data-toggle="modal" data-target="#settingForm"></i>
     <h1 class="display-4">Fluid jumbotron</h1>
     <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
   </div>
 </div>
 
 <!-- 설정 Modal -->
-<div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="settingForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -182,9 +177,9 @@
       </div>
       <div class="modal-body" style="font-size: 20px; font-family: 'Do Hyeon', sans-serif;">
       	<!-- 회원정보 수정 Button trigger modal -->
-        <div class="userUpdate" style="cursor: pointer" data-toggle="modal" data-target="#exampleModal4">회원정보 수정</div>
+        <div class="userUpdate" style="cursor: pointer" data-toggle="modal" data-target="#updateForm">회원정보 수정</div>
         <hr>
-        <div class="userDelete" style="cursor: pointer" data-toggle="modal" data-target="#exampleModal5">회원탈퇴</div>
+        <div class="userDelete" style="cursor: pointer" data-toggle="modal" data-target="#pwCheckForm">회원탈퇴</div>
         <hr>
         <div style="cursor: pointer" onclick="location.href='/logout'">로그아웃</div>
         <hr>
@@ -194,7 +189,7 @@
 </div>
 
 <!-- 회원정보 수정 Modal -->
-<div class="modal fade" id="exampleModal4" tabindex="-1"
+<div class="modal fade" id="updateForm" tabindex="-1"
 	aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered" style="width: 375px; height: 619px;">
 		<div class="modal-content">
@@ -207,16 +202,16 @@
 				<div class="container">
 					<form action="/memberUpdate" method="post" class="needs-validation" novalidate>
 						<div class="form-group has-feedback">
-							<input class="form-control" type="text" id="userId" name="userId" value="${member.userId}" readonly="readonly" />
+							<input class="form-control" type="text" id="updateUserId" name="userId" value="${member.userId}" readonly="readonly" />
 						</div>
 						<div class="form-group has-feedback">
-						 	<input class="form-control" type="text" id="name4" name="name" placeholder="이름" autocomplete="off" required />
-						 	<div id='name-check4'>
+						 	<input class="form-control" type="text" id="updateName" name="name" placeholder="이름" autocomplete="off" required />
+						 	<div id='update-name-check'>
 						    </div>
 						</div>
 						<div class="form-group has-feedback">
-							<input class="form-control" type="password" id="userPw4" name="userPw" placeholder="비밀번호" autocomplete="off" required />
-							<div id='password-check4'>
+							<input class="form-control" type="password" id="updateUserPw" name="userPw" placeholder="비밀번호" autocomplete="off" required />
+							<div id='update-password-check'>
 						    </div>
 						</div>
 						<div class="form-group has-feedback">
@@ -230,7 +225,7 @@
 </div>
 
 <!-- 비밀번호 확인 Modal -->
-<div class="modal fade" id="exampleModal5" tabindex="-1"
+<div class="modal fade" id="pwCheckForm" tabindex="-1"
 	aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered" style="width: 375px; height: 619px;">
 		<div class="modal-content">
@@ -241,17 +236,16 @@
 			
 			<div class="modal-body">
 				<div class="container">
-					<form action="/memberDelete" method="post" class="needs-validation" novalidate>
+					<form action="#" method="post" class="needs-validation" name="pwCheck" novalidate>
 						<div class="form-group has-feedback">
-							<input class="form-control" type="hidden" id="userId5" name="userId" value="${member.userId }" />
-							<input class="form-control" type="hidden" id="name5" name="name" value="${member.name }" />
-							<input class="form-control" type="password" id="userPw5" name="userPw" placeholder="비밀번호" autocomplete="off" required />
-							<div id='password-check5'>
+							<input class="form-control" type="hidden" id="pwCheckUserId" name="userId" value="${member.userId }" />
+							<input class="form-control" type="hidden" id="pwCheckName" name="name" value="${member.name }" />
+							<input class="form-control" type="password" id="pwCheckUserPw" name="userPw" placeholder="비밀번호" autocomplete="off" required />
+							<div id='pwCheck-password-check'>
 						    </div>
 						</div>
 						<div class="form-group has-feedback">
-							<button class="btn" type="submit" id="pwCheck" style="color: white; background: #19CE60; width: 311px; font-family: 'Do Hyeon', sans-serif;"
-								data-toggle="modal" data-target="#exampleModal6">확인</button>
+							<button class="btn" type="button" id="pwCheckBtn" style="color: white; background: #19CE60; width: 311px; font-family: 'Do Hyeon', sans-serif;">확인</button>
 						</div>
 					</form>
 				</div>
@@ -260,8 +254,8 @@
 	</div>
 </div>
 
-<!-- 회원탈퇴 Modal 
-<div class="modal fade" id="exampleModal6" tabindex="-1"
+<!-- 회원탈퇴 Modal -->
+<div class="modal fade" id="deleteForm" tabindex="-1"
 	aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered" style="width: 375px; height: 619px;">
 		<div class="modal-content">
@@ -273,16 +267,20 @@
 			<div class="modal-body">
 				<div class="container">
 					<form action="/memberDelete" method="post" class="needs-validation" novalidate>
-						<div style="text-align: center; font-family: 'Do Hyeon', sans-serif;">회원탈퇴 하시겠습니까?</div>
+						<input class="form-control" type="hidden" id="deleteUserId" name="userId" value="${member.userId }" />
+							<input class="form-control" type="hidden" id="deleteName" name="name" value="${member.name }" />
+							<input class="form-control" type="hidden" id="pwCheckUserPw" name="userPw" value="${member.userPw }" />
+						<div style="text-align: center; font-family: 'Do Hyeon', sans-serif; font-size: 25px; margin-bottom: 20px;">회원탈퇴 하시겠습니까?</div>
 						<div class="form-group has-feedback">
-							<button class="btn" type="submit" style="color: white; background: #19CE60; width: 311px; font-family: 'Do Hyeon', sans-serif;">확인</button>
+							<button class="btn" type="submit" style="color: white; background: #19CE60; width: 311px; font-family: 'Do Hyeon', sans-serif; margin-bottom: 10px;">확인</button>
+							<button class="btn btn-danger" type="button" id="cancle" style="color: white; width: 311px; font-family: 'Do Hyeon', sans-serif;" onclick="location.href='/member/user'">취소</button>
 						</div>
 					</form>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>-->
+</div>
 
 </body>
 </html>

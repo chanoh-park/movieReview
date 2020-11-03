@@ -87,7 +87,7 @@ public class MemberController {
 	
 	// 회원정보 페이지
 	@RequestMapping(value = "/member/user", method=RequestMethod.GET)
-	public void getUser() throws Exception {
+	public void getUser(MemberVO vo) throws Exception {
 		
 		log.info("get user");
 		
@@ -96,9 +96,9 @@ public class MemberController {
 	// 회원정보 수정
 	@RequestMapping(value = "/memberUpdate", method=RequestMethod.POST)
 	public String memberUpdate(MemberVO vo, HttpSession session) throws Exception {
-		
+
 		service.memberUpdate(vo);
-		
+
 		session.invalidate();
 		
 		return "redirect:/";
@@ -109,7 +109,7 @@ public class MemberController {
 	@RequestMapping(value = "/pwCheck", method=RequestMethod.POST)
 	@ResponseBody
 	public int pwCheck(MemberVO vo) throws Exception {
-		
+
 		int result = service.pwCheck(vo);
 		
 		return result;
@@ -119,21 +119,21 @@ public class MemberController {
 	// 회원탈퇴
 	@RequestMapping(value = "/memberDelete", method=RequestMethod.POST)
 	public String memberDelete(MemberVO vo, HttpSession session, RedirectAttributes rttr) throws Exception {
-		
-		// 세션에 있는 member를 가져와 member 변수에 넣는다.
-		MemberVO member = (MemberVO) session.getAttribute("member");
-		
-		// 세션에 있는 비밀번호
-		String sessionPw = member.getUserPw();
-		
-		// vo로 들어오는 비밀번호
-		String voPw = member.getUserPw();
-		
-		if (!(sessionPw.equals(voPw))) {
-			rttr.addFlashAttribute("msg", false);
-			return "redirect:/";
-		}
-		
+//		
+//		// 세션에 있는 member를 가져와 member 변수에 넣는다.
+//		MemberVO member = (MemberVO) session.getAttribute("member");
+//		
+//		// 세션에 있는 비밀번호
+//		String sessionPw = member.getUserPw();
+//		
+//		// vo로 들어오는 비밀번호
+//		String voPw = vo.getUserPw();
+//		
+//		if (!(sessionPw.equals(voPw))) {
+//			rttr.addFlashAttribute("msg", false);
+//			return "redirect:/";
+//		}
+//		
 		service.memberDelete(vo);
 		
 		session.invalidate();
