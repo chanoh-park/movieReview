@@ -268,8 +268,8 @@
 				<div class="container">
 					<form action="/memberDelete" method="post" class="needs-validation" novalidate>
 						<input class="form-control" type="hidden" id="deleteUserId" name="userId" value="${member.userId }" />
-							<input class="form-control" type="hidden" id="deleteName" name="name" value="${member.name }" />
-							<input class="form-control" type="hidden" id="pwCheckUserPw" name="userPw" value="${member.userPw }" />
+						<input class="form-control" type="hidden" id="deleteName" name="name" value="${member.name }" />
+						<input class="form-control" type="hidden" id="pwCheckUserPw" name="userPw" value="${member.userPw }" />
 						<div style="text-align: center; font-family: 'Do Hyeon', sans-serif; font-size: 25px; margin-bottom: 20px;">회원탈퇴 하시겠습니까?</div>
 						<div class="form-group has-feedback">
 							<button class="btn" type="submit" style="color: white; background: #19CE60; width: 311px; font-family: 'Do Hyeon', sans-serif; margin-bottom: 10px;">확인</button>

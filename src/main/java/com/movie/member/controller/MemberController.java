@@ -54,11 +54,17 @@ public class MemberController {
 		
 	}
 	
-	// 로그인
+	// 로그인 GET
+	@RequestMapping(value="/login", method=RequestMethod.GET)
+	public void getLogin() throws Exception {
+		log.info("get login");
+	}
+	
+	// 로그인 POST
 	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public String login(MemberVO vo, HttpServletRequest req, RedirectAttributes rttr) throws Exception {
+	public String postLogin(MemberVO vo, HttpServletRequest req, RedirectAttributes rttr) throws Exception {
 		
-		log.info("post login ");
+		log.info("post login");
 		
 		HttpSession session = req.getSession();
 		
@@ -111,6 +117,17 @@ public class MemberController {
 	public int pwCheck(MemberVO vo) throws Exception {
 
 		int result = service.pwCheck(vo);
+		
+		return result;
+		
+	}
+	
+	// 아이디 비밀번호 확인
+	@RequestMapping(value = "/loginCheck", method=RequestMethod.POST)
+	@ResponseBody
+	public int loginCheck(MemberVO vo) throws Exception {
+		
+		int result = service.loginCheck(vo);
 		
 		return result;
 		

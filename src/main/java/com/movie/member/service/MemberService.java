@@ -19,6 +19,9 @@ public interface MemberService {
 	// 비밀번호 확인
 	public int pwCheck(MemberVO vo) throws Exception;
 	
+	// 아이디 비밀번호 확인
+	public int loginCheck(MemberVO vo) throws Exception;
+	
 	// 회원탈퇴
 	public void memberDelete(MemberVO vo) throws Exception;
 

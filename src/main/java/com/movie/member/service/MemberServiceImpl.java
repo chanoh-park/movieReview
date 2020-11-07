@@ -64,5 +64,15 @@ public class MemberServiceImpl implements MemberService {
 		dao.memberDelete(vo);
 		
 	}
+	
+	// 아이디 비밀번호 확인
+	@Override
+	public int loginCheck(MemberVO vo) throws Exception {
+		
+		int result = dao.loginCheck(vo);
+		
+		return result;
+		
+	}
 
 }

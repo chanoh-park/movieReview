@@ -64,5 +64,15 @@ public class MemberDAOImpl implements MemberDAO {
 		sql.delete("MemberMapper.memberDelete", vo);
 		
 	}
+	
+	// 아이디 비밀번호 확인
+	@Override
+	public int loginCheck(MemberVO vo) throws Exception {
+		
+		int result = sql.selectOne("MemberMapper.loginCheck", vo);
+		
+		return result;
+		
+	}
 
 }

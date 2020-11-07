@@ -44,8 +44,18 @@
 		</c:if>
 		
 		<c:if test="${member != null }">
-			<div style="margin-left: 20px; font-family: 'Do Hyeon', sans-serif; color: white">${member.userId } 님</div>
-			<i class="fas fa-user-circle fa-2x" style="margin-left: 20px; background: white; cursor:pointer;" onclick="location.href='/member/user'"></i>
+			<c:if test="${member.memberType == 'a' }">
+			
+				<a href="/member/admin">관리자 페이지</a>
+				<a href="/logout">로그아웃</a>
+			
+			</c:if>
+			<c:if test="${member.memberType == 'p' }">
+			
+				<div style="margin-left: 20px; font-family: 'Do Hyeon', sans-serif; color: white">${member.userId } 님</div>
+				<i class="fas fa-user-circle fa-2x" style="margin-left: 20px; background: white; cursor:pointer;" onclick="location.href='/member/user'"></i>
+				
+			</c:if>			
 		</c:if>
       </form>
     </div>

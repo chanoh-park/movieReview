@@ -186,6 +186,24 @@
 			}
 		});
 		
+		/* login 할 때 아이디와 비밀번호 맞는지 확인 */
+		$('#loginBtn').click(function() {
+			$.ajax({
+				url : "/loginCheck",
+				type : "post",
+				dataType : "json",
+				data : $("form[name=loginCheck]").serialize(),
+				success : function(data) {
+					if (data == 0) {
+						$('#loginForm').modal("hide");
+						$('#loginFailForm').modal("show");
+					} else {
+						$('#login').submit();
+					}
+				}
+			});
+		});
+		
 		/* 다른 모달창 띄우면 현재 열려있는 모달창 닫기 */
 		/* 로그인 -> 회원가입 */
 		$('.userLoginBtn').click(function() {
@@ -197,12 +215,6 @@
 		$('.userJoinBtn').click(function() {
 			$('#loginForm').modal("hide");
 			$('#joinForm').modal("show");
-		});
-		
-		/* 로그인 -> 로그인 실패 */
-		$('#loginBtn').click(function() {
-			$('#loginForm').modal("hide");
-			$('#loginFailForm').modal("show");
 		});
 		
 		/* 로그인 실패 -> 로그인 */
