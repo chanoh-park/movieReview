@@ -32,7 +32,7 @@
 								</div>
 								<div class="userJoin">계정이 없으신가요?<button class="userJoinBtn" type="button" style="background: white; border: none; outline: none; color: #19CE60">회원가입</button></div>
 								<div class="hr-sect">OR</div>
-								<a href = "https://kauth.kakao.com/oauth/authorize?client_id=295d53cb156ca5e83e6bb8370e8bcc18&redirect_uri=http://localhost:8080/kakaologin&response_type=code">
+								<a href = "https://kauth.kakao.com/oauth/authorize?client_id=ecdfdd7e0768f74be3f2fac07b9da53b&redirect_uri=http://localhost:8080/kakaologin&response_type=code">
 						        	<img src="/resources/images/kakao_login_medium_wide.png" alt="" style="width: 311px;"/>
 							    </a>
 						</form>

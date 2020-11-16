@@ -33,7 +33,7 @@
       <form class="form-inline my-2 my-md-0">
         <input class="form-control" type="text" placeholder="Search" aria-label="Search">
         
-        <c:if test="${member == null }">
+        <c:if test="${member == null and kname == null}">
         	<!-- 로그인 Button trigger modal -->
 			<button type="button" class="btn btn-primary" data-toggle="modal"
 				data-target="#loginForm" style="margin-left: 10px; font-family: 'Do Hyeon', sans-serif; background: white; border: none; color: #74747B">로그인</button>
@@ -55,8 +55,15 @@
 				<div style="margin-left: 20px; font-family: 'Do Hyeon', sans-serif; color: white">${member.userId } 님</div>
 				<i class="fas fa-user-circle fa-2x" style="margin-left: 20px; background: white; cursor:pointer;" onclick="location.href='/member/user'"></i>
 				
-			</c:if>			
+			</c:if>	
+			
 		</c:if>
+		
+		<c:if test="${kname != null }">
+			<div style="margin-left: 20px; font-family: 'Do Hyeon', sans-serif; color: white">${kname } 님</div>
+			<a href="/logout">로그아웃</a>
+		</c:if>
+		
       </form>
     </div>
   </div>
