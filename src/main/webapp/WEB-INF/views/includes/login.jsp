@@ -9,7 +9,7 @@
 	<div class="modal-dialog modal-dialog-centered" style="width: 375px; height: 619px;">
 		<div class="modal-content">
 		
-			<div class="modal-title" id="exampleModalLabel">CHOONGANG<br /> PEDIA</div>
+			<div class="modal-title" id="exampleModalLabel">MOVIE<br /> REVIEW</div>
 			
 			<div class="part-title">로그인</div>
 			
@@ -28,9 +28,9 @@
 								    </div>
 								</div>
 								<div class="form-group has-feedback">
-									<button class="btn" type="button" id="loginBtn" style="color: white; background: #19CE60; width: 311px; font-family: 'Do Hyeon', sans-serif;">로그인</button>
+									<button class="btn" type="button" id="loginBtn" name="loginBtn" style="color: white; background: #1A2F63; width: 311px; font-family: 'Do Hyeon', sans-serif;">로그인</button>
 								</div>
-								<div class="userJoin">계정이 없으신가요?<button class="userJoinBtn" type="button" style="background: white; border: none; outline: none; color: #19CE60">회원가입</button></div>
+								<div class="userJoin">계정이 없으신가요?<button class="userJoinBtn" type="button" style="background: white; border: none; outline: none; color: #1A2F63">회원가입</button></div>
 								<div class="hr-sect">OR</div>
 								<a href = "https://kauth.kakao.com/oauth/authorize?client_id=ecdfdd7e0768f74be3f2fac07b9da53b&redirect_uri=http://localhost:8080/kakaologin&response_type=code">
 						        	<img src="/resources/images/kakao_login_medium_wide.png" alt="" style="width: 311px;"/>
@@ -49,13 +49,13 @@
 		<div class="modal-dialog modal-dialog-centered" style="width: 375px; height: 619px;">
 			<div class="modal-content">
 		
-				<div class="part-title">로그인 실패</div>
+				<div class="part-title">알림</div>
 			
 				<div class="modal-body">
 					<div class="container">
-						<div style="text-align: center; font-family: 'Do Hyeon', sans-serif; font-size: 25px; margin-bottom: 20px;">
+						<div style="text-align: center; font-family: 'Do Hyeon', sans-serif; font-size: 20px; margin-bottom: 20px;">
 							아이디 혹은 비밀번호가 틀렸습니다.</div>
-						<button class="btn" type="button" id="loginFailBtn" style="color: white; background: #19CE60; width: 311px;
+						<button class="btn" type="button" id="loginFailBtn" style="color: white; background: #1A2F63; width: 311px;
 							font-family: 'Do Hyeon', sans-serif; margin-bottom: 10px;">확인</button>						
 					</div>
 				</div>

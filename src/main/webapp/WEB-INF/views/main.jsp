@@ -10,7 +10,7 @@
 
 <meta name='viewport' content='width=device-width, initial-scale=1'>
 
-<!-- modal-title font -->
+<!-- modal-title font, navbar-brand font -->
 <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
 
 <!-- 기본 font -->
@@ -30,7 +30,7 @@
 	
 <script
 	src='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js'></script>
-	
+
 <title>중앙피디아</title>
 </head>
 
@@ -39,7 +39,7 @@
 	.modal-title {
 		font-family: 'Luckiest Guy', cursive;
 		font-size: 40px;
-		color: #19CE60;
+		color: #1A2F63;
 		margin-top: 20px; 
 		text-align: center;
 	}
@@ -85,7 +85,11 @@
 		line-height: 0px;
 		margin: 0px 16px;
 	}
-
+	
+	.navbar-brand {
+		font-family: 'Luckiest Guy', cursive;
+	}
+	
 </style>
 
 <script type="text/javascript">
@@ -98,12 +102,12 @@
 				$('#join-name-check').text("이름을 입력하세요.");
 				$("#join-name-check").css("color", "red");
 				$("#joinName").css("border", "2px solid red");
-				$("#submit").attr("disabled", true);
+				$("#joinSubmit").attr("disabled", true);
 			}
 			else {
 				$('#join-name-check').text("");
 				$("#joinName").css("border", "2px solid #19CE60");
-				$("#submit").attr("disabled", false);
+				$("#joinSubmit").attr("disabled", true);
 			}
 		});
 		
@@ -116,7 +120,7 @@
 				$('#join-id-check').text("아이디를 입력하세요.");
 				$("#join-id-check").css("color", "red");
 				$("#joinUserId").css("border", "2px solid red");
-				$("#submit").attr("disabled", true);
+				$("#joinSubmit").attr("disabled", true);
 			}
 			else {
 				/* ID 중복확인 */
@@ -129,12 +133,12 @@
 							$("#join-id-check").text("이미 사용중인 아이디입니다.");
 							$("#join-id-check").css("color", "red");
 							$("#joinUserId").css("border", "2px solid red");
-							$("#submit").attr("disabled", true);
+							$("#joinSubmit").attr("disabled", true);
 						}else {
 							$("#join-id-check").text("사용 가능한 아이디입니다.");
 							$("#join-id-check").css("color", "green");
 							$("#joinUserId").css("border", "2px solid #19CE60");
-							$("#submit").attr("disabled", false);
+							$("#joinSubmit").attr("disabled", true);
 						}
 					}
 				});
@@ -147,19 +151,29 @@
 				$('#join-password-check').text("비밀번호를 입력하세요.");
 				$("#join-password-check").css("color", "red");
 				$("#joinUserPw").css("border", "2px solid red");
-				$("#submit").attr("disabled", true);
+				$("#joinSubmit").attr("disabled", true);
 			}
 			else {
 				$('#join-password-check').text("");
 				$("#joinUserPw").css("border", "2px solid #19CE60");
-				$("#submit").attr("disabled", false);
+				$("#joinSubmit").attr("disabled", false);
+			}
+		});
+		
+		/* 회원가입 버튼 눌렀을 때 이름, 아이디, 비밀번호 체크 */
+		$('#joinSubmit').click(function() {
+			if($('#joinName').val() == "") {
+				$('#join-name-check').text("이름을 입력하세요.");
+				$("#join-name-check").css("color", "red");
+				$("#joinName").css("border", "2px solid red");
+				$("#joinSubmit").attr("disabled", true);
 			}
 		});
 		
 		/* login 아이디 체크 */
 		$('#loginUserId').focusout(function() {
 			if(this.value == "") {
-				$('#login-id-check').text("이름을 입력하세요.");
+				$('#login-id-check').text("아이디를 입력하세요.");
 				$("#login-id-check").css("color", "red");
 				$("#loginUserId").css("border", "2px solid red");
 				$("#submit").attr("disabled", true);
@@ -204,6 +218,26 @@
 			});
 		});
 		
+		/* 모달창 닫으면 입력값 초기화 */
+		$('.modal').on('hidden.bs.modal', function (e) {
+			$(this).find('form')[0].reset()
+			
+			$('#join-name-check').text("");
+			$("#joinName").css("border", "");
+			
+			$('#join-id-check').text("");
+			$("#joinUserId").css("border", "");
+			
+			$('#join-password-check').text("");
+			$("#joinUserPw").css("border", "");
+			
+			$('#login-id-check').text("");
+			$("#loginUserId").css("border", "");
+			
+			$('#login-password-check').text("");
+			$("#loginUserPw").css("border", "");
+		});
+		
 		/* 다른 모달창 띄우면 현재 열려있는 모달창 닫기 */
 		/* 로그인 -> 회원가입 */
 		$('.userLoginBtn').click(function() {
@@ -232,6 +266,7 @@
 <%@ include file="includes/navbar.jsp" %>
 <%@ include file="includes/login.jsp" %>
 <%@ include file="includes/register.jsp" %>
+<%@ include file="includes/footer.jsp" %>
 
 </body>
 </html>

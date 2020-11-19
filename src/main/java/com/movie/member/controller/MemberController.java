@@ -40,7 +40,7 @@ public class MemberController {
 
 		service.register(vo);
 
-		return "/main";
+		return "redirect:/";
 
 	}
 
@@ -57,22 +57,23 @@ public class MemberController {
 
 	}
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET) 
-	public ModelAndView memberLoginForm(HttpSession session) {
-		
-		ModelAndView mav = new ModelAndView(); 
-		
-		String kakaoUrl = KakaoController.getAuthorizationUrl(session);
-		
-		/* 생성한 인증 URL을 View로 전달 */ 
-		mav.setViewName("main"); 
-		
-		// 카카오 로그인 
-		mav.addObject("kakao_url", kakaoUrl); 
-		
-		return mav; 
-		
-	}// end memberLoginForm()
+//	@RequestMapping(value = "/login", method = RequestMethod.GET) 
+//	public ModelAndView memberLoginForm(HttpSession session) {
+//		
+//		ModelAndView mav = new ModelAndView(); 
+//		
+//		String kakaoUrl = KakaoController.getAuthorizationUrl(session);
+//		
+//		/* 생성한 인증 URL을 View로 전달 */ 
+//		mav.setViewName("main"); 
+//		
+//		// 카카오 로그인 
+//		mav.addObject("kakao_url", kakaoUrl); 
+//		
+//		return mav; 
+//		
+//	}// end memberLoginForm()
+	
 	
 	// 카카오 로그인
 	@RequestMapping(value = "/kakaologin", produces = "application/json", method = { RequestMethod.GET,

@@ -135,6 +135,20 @@
 			}
 		});
 		
+		/* 모달창 닫으면 입력값 초기화 */
+		$('.modal').on('hidden.bs.modal', function (e) {
+			$(this).find('form')[0].reset()
+			
+			$('#pwCheck-password-check').text("");
+			$("#pwCheckUserPw").css("border", "");
+			
+			$("#update-name-check").text("");
+			$("#updateName").css("border", "");
+			
+			$('#update-password-check').text("");
+			$("#updateUserPw").css("border", "");
+		});
+		
 		/* 다른 모달창 띄우면 현재 열려있는 모달창 닫기 */
 		/* 설정 -> 회원정보 수정 */
 		$('.userUpdate').click(function() {
@@ -156,13 +170,11 @@
 
 <%@ include file="../includes/navbar.jsp" %>
 
-<div class="jumbotron jumbotron-fluid my-3 shadow p-3">
-  <div class="container">
-  	<!-- 설정 Button trigger modal -->
-	<i class="fas fa-cogs" style="float: right; cursor:pointer;" data-toggle="modal" data-target="#settingForm"></i>
-    <h1 class="display-4">Fluid jumbotron</h1>
-    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-  </div>
+<div class="container-fluid py-5" style="margin: 0 auto;">
+	<div class="jumbotron text-white jumbotron-image shadow" style="background-image: url(https://images.unsplash.com/photo-1552152974-19b9caf99137?fit=crop&w=1350&q=80);">
+		<!-- 설정 Button trigger modal -->
+  		<i class="fas fa-cog" style="float: right; cursor: pointer; color: white; margin-top: 5px;" data-toggle="modal" data-target="#settingForm"></i>
+	</div>
 </div>
 
 <!-- 설정 Modal -->
